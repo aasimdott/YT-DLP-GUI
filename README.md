@@ -1,50 +1,53 @@
-# simple-gui-for-yt-dlp
-frontend of yt-dlp for command less downloads
+# Multi-Threaded 4K Video Downloader
 
+A powerful, asynchronous desktop application built with Python and PyQt6 that leverages `yt-dlp` to download high-definition videos (up to 4K) from various streaming platforms. It features concurrent downloading, custom row UI elements, and built-in anonymity support via Tor proxy routing.
 
-yt-dlp GUI (Linux Binary)
-A lightweight, standalone graphical user interface for the powerful yt-dlp engine. This tool allows users on Debian-based distributions to download high-quality video and audio from thousands of websites without using the command line.
-✨ Key Features
+## 🚀 Features
 
-    Tor Proxy Support: Built-in option to route your traffic through the Tor network for enhanced privacy and to bypass geo-restrictions (requires a running Tor Browser or service).
-    Custom Download Folder: Integrated folder selector to choose exactly where your files are saved.
-    Standalone Binary: No need to manage Python environments or dependencies; simply download and run.
-    Debian Optimized: Designed to work seamlessly on Ubuntu, Linux Mint, and other Debian-based distros.
+- **High-Resolution Support:** Downloads 1080p, 2K, and 4K media by automatically stitching video and audio streams.
+- **Multi-Threaded Performance:** Runs downloads on background `QThread` workers to keep the user interface smooth and responsive.
+- **Anonymity Toggle:** Route your traffic through a local Tor proxy with a single click to bypass IP throttling or geo-blocks.
+- **Clean UI:** Clean desktop interface built with PyQt6, featuring download progress bars and silent background processes (no flashing command prompts on Windows).
 
-🚀 Quick Start (Debian/Ubuntu)
-1. Requirements
-Ensure you have ffmpeg installed to allow for merging high-quality video and audio streams:
-bash
+## 📋 Prerequisites
 
-sudo apt update && sudo apt install yt-dlp tor ffmpeg 
+Before running the application, ensure you have the following system dependencies installed:
 
-2. Installation
+1. **Python 3.7+**
+2. **FFmpeg:** Crucial for merging separate high-quality video and audio streams. 
+   - *Windows:* Install via `scoop install ffmpeg` or download from the official site and add it to your System `PATH`.
+   - *macOS:* Install via Homebrew: `brew install ffmpeg`
+   - *Linux:* Install via APT: `sudo apt install ffmpeg`
+3. **Tor Service (Optional):** Required only if you plan to use the Tor Proxy feature. Ensure the Tor background service is running on its default port (`9050`).
 
-    Download the latest UDM.Universal.Download.Module binary from the Releases page.
-    Navigate to your downloads folder and make the binary executable:
-    bash
+## ⚙️ Installation & Setup
 
-    chmod +x UDM.Universal.Download.Module
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com
+   cd YOUR-REPO-NAME
+   ```
 
-3. Usage
-Double-click the binary or run it via terminal:
-bash
+2. **Install Python dependencies:**
+   ```bash
+   pip install PyQt6 yt-dlp
+   ```
 
-./UDM.Universal.Download.Module
+## 💻 Usage
 
-⚙️ Configuration & Features
-📂 Download Folder Selection
-By default, files are saved to your current directory. Click the "Select Folder" button within the GUI to set a custom destination path for your downloads.
-🧅 Using the Tor Proxy (Optional)
-To use the Tor proxy feature:
+1. Open your terminal in the project directory.
+2. Launch the application:
+   ```bash
+   python main.py
+   ```
+3. Paste your desired video URL, configure your download directory, toggle Tor if needed, and click **Download**.
 
-    Open the Tor Browser or start the Tor service (sudo systemctl start tor).
-    Check the "Enable Tor Proxy" box in the GUI.
-    The application will automatically route requests through socks5://127.0.0.1:9050 (or 9150 for Tor Browser).
+## 🛠️ Built With
 
-🛠 Troubleshooting
+- [PyQt6](https://riverbankcomputing.com) - The GUI framework used.
+- [yt-dlp](https://github.com) - The core download and scraping engine.
+- [FFmpeg](https://ffmpeg.org) - Multimedia framework for stream merging.
 
-    Binary won't launch: Ensure you have granted execution permissions (chmod +x).
-    Download fails: Check if your version of yt-dlp is up to date. This GUI often bundles its own, but you can manually update the core by running yt-dlp -U if you have it installed globally.
-    
-    (Optional)Tor Errors: Ensure Tor is actually running on your system before enabling the proxy option.
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
